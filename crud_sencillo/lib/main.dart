@@ -21,15 +21,17 @@ void main() async {
 class MyApp extends StatefulWidget {
   
   
+  
   @override
   State<MyApp> createState() => _MyAppState();
+  
 }
 
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     
-
+    
     final GlobalKey<FormState> myFormKey = GlobalKey<FormState>();
 
     String name = '';
@@ -88,14 +90,13 @@ class _MyAppState extends State<MyApp> {
                     }
                   ),
     
-                  Container(
-                    height: 500,
-                    //color: Colors.red,
-                    child: const ScanTiles(
-    
-                    )
-                  )
-    
+                  
+                    Container(
+                      height: 800,
+                      child: const ScanTiles(
+                      
+                      )
+                    ),   
                   
                 ],
                 ),

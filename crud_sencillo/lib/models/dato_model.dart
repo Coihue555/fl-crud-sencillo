@@ -1,5 +1,3 @@
-
-
 class DatoModel {
     
     int? id;
