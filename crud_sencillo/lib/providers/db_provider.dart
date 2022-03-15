@@ -4,8 +4,8 @@ import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
 
-import 'package:simple_crud/models/dato_model.dart';
-export 'package:simple_crud/models/dato_model.dart';
+import 'package:crud_sencillo/models/dato_model.dart';
+export 'package:crud_sencillo/models/dato_model.dart';
 
 class DBProvider{
 

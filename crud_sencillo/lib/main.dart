@@ -2,12 +2,15 @@
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:simple_crud/providers/db_provider.dart';
-import 'package:simple_crud/providers/persona_list_provider.dart';
-import 'package:simple_crud/providers/scan_list_provider.dart';
-import 'package:simple_crud/widget/scan_tiles.dart';
+import 'package:crud_sencillo/providers/db_provider.dart';
+import 'package:crud_sencillo/providers/persona_list_provider.dart';
+import 'package:crud_sencillo/providers/scan_list_provider.dart';
+import 'package:crud_sencillo/widget/scan_tiles.dart';
 
+import 'providers/persona_list_provider.dart';
+import 'providers/scan_list_provider.dart';
 import 'providers/ui_provider.dart';
+import 'widget/scan_tiles.dart';
 
 void main() async {
   
@@ -34,8 +37,8 @@ class _MyAppState extends State<MyApp> {
 
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider (create: (_) => new DatosListProvider(), ),
-        ChangeNotifierProvider (create: (_) => new DatoListProvider(), )
+        ChangeNotifierProvider (create: (_) => DatosListProvider(), ),
+        ChangeNotifierProvider (create: (_) => DatoListProvider(), )
       ],
 
       child: MaterialApp(

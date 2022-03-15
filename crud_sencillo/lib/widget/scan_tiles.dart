@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:simple_crud/models/dato_model.dart';
-import 'package:simple_crud/providers/persona_list_provider.dart';
+import 'package:crud_sencillo/models/dato_model.dart';
+import 'package:crud_sencillo/providers/persona_list_provider.dart';
 import 'package:provider/provider.dart';
 
 class ScanTiles extends StatefulWidget {

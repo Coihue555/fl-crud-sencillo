@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:simple_crud/providers/scan_list_provider.dart';
-
-import 'package:simple_crud/providers/ui_provider.dart';
-
-import 'package:simple_crud/widgets/custom_navigatorbar.dart';
-import 'package:simple_crud/widgets/scan_button.dart';
+import 'package:crud_sencillo/providers/scan_list_provider.dart';
+import 'package:crud_sencillo/providers/ui_provider.dart';
+import 'package:crud_sencillo/widgets/custom_navigatorbar.dart';
+import 'package:crud_sencillo/widgets/scan_button.dart';
 
 import 'package:provider/provider.dart';
 

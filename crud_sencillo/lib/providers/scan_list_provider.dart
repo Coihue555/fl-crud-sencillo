@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:simple_crud/providers/db_provider.dart';
+import 'package:crud_sencillo/providers/db_provider.dart';
 
 class DatoListProvider extends ChangeNotifier{
   List<DatoModel> datos = [];
