@@ -1,3 +1,4 @@
+import 'package:crud_sencillo/providers/scan_list_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:crud_sencillo/models/dato_model.dart';
 import 'package:crud_sencillo/providers/persona_list_provider.dart';
@@ -22,15 +23,24 @@ class _ScanTilesState extends State<ScanTiles> {
         if(snapshot.hasData){
           return ListView.builder(
             itemCount: snapshot.data!.length,
-            itemBuilder: (_, i)=> ListTile(
-            leading: Icon(Icons.home,
-            color: Theme.of(context).primaryColor
-          ),
-          title: Text( 'Nombre: ' + snapshot.data![i].email.toString() + ' ' + 'Email: ' + snapshot.data![i].nombre.toString() ),
-          subtitle: Text(snapshot.data![i].id.toString()),
-          trailing: const Icon(Icons.arrow_forward_ios, color: Colors.grey,),
-          //onTap: ()=> launchURL(context, scans[i]),
-        )
+            itemBuilder: (_, i)=> Dismissible(
+              key: UniqueKey(),
+              background: Container(
+                color: Colors.red,
+              ),
+              onDismissed: (DismissDirection direction){
+                Provider.of<DatoListProvider>(context, listen: false).borrarDatoById(snapshot.data![i].id);
+              },
+              child: ListTile(
+              leading: Icon(Icons.home,
+              color: Theme.of(context).primaryColor
+                      ),
+                      title: Text( snapshot.data![i].id.toString() + ' ' + snapshot.data![i].nombre.toString() ),
+                      subtitle: Text(snapshot.data![i].email.toString()),
+                      trailing: const Icon(Icons.arrow_forward_ios, color: Colors.grey,),
+                      //onTap: ()=> launchURL(context, scans[i]),
+                    ),
+            )
         );
         } return const CircularProgressIndicator();
       },

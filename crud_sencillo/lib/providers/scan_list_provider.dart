@@ -5,7 +5,7 @@ class DatoListProvider extends ChangeNotifier{
   List<DatoModel> datos = [];
   String tipoSeleccionado = 'http';
 
-  Future<DatoModel> nuevoDato(String email, String nombre) async {
+  Future<DatoModel> nuevoDato(String nombre, String email ) async {
     final nuevoDato =  DatoModel(email: email, nombre: nombre);
     final id = await DBProvider.db.nuevoDato(nuevoDato);
     //asignar el ID de la base de datos al modelo
@@ -18,7 +18,7 @@ class DatoListProvider extends ChangeNotifier{
     return nuevoDato;
   }
 
-  cargarScans() async {
+  cargarDatos() async {
     final datos = await DBProvider.db.getTodos();
     this.datos = [...datos!];
     notifyListeners();
@@ -37,9 +37,9 @@ class DatoListProvider extends ChangeNotifier{
     notifyListeners();
   }
 
-  borrarSDatoById( int? id) async {
+  borrarDatoById( int? id) async {
     await DBProvider.db.deleteDato(id!);
-    cargarDatosByNombre(tipoSeleccionado);
+    cargarDatos();
   }
 
 }

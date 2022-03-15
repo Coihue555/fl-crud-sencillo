@@ -87,7 +87,7 @@ class DBProvider{
 
     Future<List<DatoModel>?> getTodos() async {
       final db = await database;
-      final res = await db!.query('Datos', orderBy: 'id ASC');
+      final res = await db!.query('Datos', orderBy: 'id DESC');
 
       
       return res.isNotEmpty

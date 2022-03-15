@@ -43,10 +43,10 @@ class _MyAppState extends State<MyApp> {
 
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'Simple CRUD App',
+        title: 'CRUD Sencillo',
         home: Scaffold(
           appBar: AppBar(
-            title: const Text('Simple CRUD'),
+            title: const Text('CRUD Sencillo'),
           ),
           body: SingleChildScrollView(
           child: Padding(
@@ -89,7 +89,7 @@ class _MyAppState extends State<MyApp> {
                   ),
     
                   Container(
-                    height: 1000,
+                    height: 500,
                     //color: Colors.red,
                     child: const ScanTiles(
     
