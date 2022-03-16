@@ -1,5 +1,6 @@
 // ignore_for_file: avoid_print
 
+import 'package:crud_sencillo/pages/ficha.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:crud_sencillo/providers/db_provider.dart';
@@ -7,10 +8,6 @@ import 'package:crud_sencillo/providers/persona_list_provider.dart';
 import 'package:crud_sencillo/providers/scan_list_provider.dart';
 import 'package:crud_sencillo/widget/scan_tiles.dart';
 
-import 'providers/persona_list_provider.dart';
-import 'providers/scan_list_provider.dart';
-import 'providers/ui_provider.dart';
-import 'widget/scan_tiles.dart';
 
 void main() async {
   
@@ -46,6 +43,11 @@ class _MyAppState extends State<MyApp> {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'CRUD Sencillo',
+        // initialRoute: 'home',
+        // routes: {
+        //   'home'  : ( _ ) => MyApp(),
+        //   'ficha' : ( _ ) => const FichaScreen()
+        // },
         home: Scaffold(
           appBar: AppBar(
             title: const Text('CRUD Sencillo'),

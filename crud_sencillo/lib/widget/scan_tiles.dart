@@ -38,7 +38,7 @@ class _ScanTilesState extends State<ScanTiles> {
                       title: Text( snapshot.data![i].id.toString() + ' ' + snapshot.data![i].nombre.toString() ),
                       subtitle: Text(snapshot.data![i].email.toString()),
                       trailing: const Icon(Icons.arrow_forward_ios, color: Colors.grey,),
-                      //onTap: ()=> launchURL(context, scans[i]),
+                      //onTap: () => Navigator.of(context).pushNamed('ficha'),
                     ),
             )
         );

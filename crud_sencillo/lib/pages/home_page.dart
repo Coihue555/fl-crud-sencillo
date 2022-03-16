@@ -14,7 +14,7 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        title: const Text('Historial'),
+        title: const Text('Principal'),
         actions: [
           IconButton(
             onPressed: (){
