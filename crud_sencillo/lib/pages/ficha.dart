@@ -23,7 +23,7 @@ class _FichaScreenState extends State<FichaScreen> {
   Widget build(BuildContext context) {
     
     
-    final GlobalKey<FormState> myFormKey = GlobalKey<FormState>();
+    final GlobalKey<FormState> myFormKey2 = GlobalKey<FormState>();
     final datoListProvider = Provider.of<DatosListProvider>(context, listen: false);
     
     return Scaffold(
@@ -32,13 +32,14 @@ class _FichaScreenState extends State<FichaScreen> {
           ),
           body: SingleChildScrollView(
           child: FutureBuilder<List<DatoModel>>(
+            //revisar esto
             future: datoListProvider.cargarTodos(),
             builder: (context, snapshot) { 
               if(snapshot.hasData){
                 return Padding(
                   padding: const EdgeInsets.symmetric( horizontal: 20, vertical: 10),
                   child: Form(
-                  key: myFormKey,
+                  key: myFormKey2,
                   child: Column(
                     children: [
                     
@@ -48,10 +49,8 @@ class _FichaScreenState extends State<FichaScreen> {
                           labelText: 'Nombre',
                         ),
                         initialValue: snapshot.data![0].nombre.toString(),
-                        onChanged: (value) {
-                          snapshot.data![0].nombre=value;
-                          
-                        },
+                        
+                        onChanged: (value) { snapshot.data![0].nombre=value;  },
                       ),
                       
                       const SizedBox(height: 30,),
@@ -74,7 +73,6 @@ class _FichaScreenState extends State<FichaScreen> {
                         onPressed: (){
                           final nuevoIngreso = DatoListProvider() ;
                           nuevoIngreso.cargarDatos();
-                          setState(() { });
                           Navigator.push(
                             context,
                             MaterialPageRoute( builder: (context) => HomeScreen() ),
