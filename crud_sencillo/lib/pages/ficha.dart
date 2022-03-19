@@ -32,7 +32,7 @@ class _FichaScreenState extends State<FichaScreen> {
           ),
           body: SingleChildScrollView(
           child: FutureBuilder<List<DatoModel>>(
-            //revisar esto
+            //revisar
             future: datoListProvider.cargarTodos(),
             builder: (context, snapshot) { 
               if(snapshot.hasData){
