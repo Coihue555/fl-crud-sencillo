@@ -48,7 +48,7 @@ class _FichaScreenState extends State<FichaScreen> {
                         decoration: const InputDecoration(
                           labelText: 'Nombre',
                         ),
-                        initialValue: snapshot.data![0].nombre.toString(),
+                        initialValue: snapshot.data![0].nombre,
                         
                         onChanged: (value) { snapshot.data![0].nombre=value;  },
                       ),
@@ -59,7 +59,7 @@ class _FichaScreenState extends State<FichaScreen> {
                         decoration: const InputDecoration(
                           labelText: 'Email',
                         ),
-                        initialValue: snapshot.data![0].email.toString(),
+                        initialValue: snapshot.data![0].email,
                         keyboardType: TextInputType.emailAddress,
                         onChanged: (value) {snapshot.data![0].email=value;},
                       ),
