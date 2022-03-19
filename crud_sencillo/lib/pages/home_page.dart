@@ -1,51 +1,110 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
-import 'package:crud_sencillo/providers/scan_list_provider.dart';
-import 'package:crud_sencillo/providers/ui_provider.dart';
-import 'package:crud_sencillo/widgets/custom_navigatorbar.dart';
-import 'package:crud_sencillo/widgets/scan_button.dart';
-
 import 'package:provider/provider.dart';
+import 'package:crud_sencillo/providers/db_provider.dart';
+import 'package:crud_sencillo/providers/persona_list_provider.dart';
+import 'package:crud_sencillo/providers/scan_list_provider.dart';
+import 'package:crud_sencillo/widget/scan_tiles.dart';
 
-class HomePage extends StatelessWidget {
-   
+
+void main() async {
+  
+  runApp(HomeScreen())
+
+  ;}
+
+class HomeScreen extends StatefulWidget {
+  
   
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        title: const Text('Principal'),
-        actions: [
-          IconButton(
-            onPressed: (){
-              Provider.of<DatoListProvider>(context, listen: false).borrarLista();
-            },
-            icon: const Icon(Icons.delete_forever)
-          )
-        ],
-      ),
-      body: _HomePageBody(),
-      bottomNavigationBar: CustomNavigationBar(),
-      floatingActionButton: SaveButton(),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-    );
-  }
+  State<HomeScreen> createState() => _HomeScreenState();
+  
 }
 
-class _HomePageBody extends StatelessWidget {
-
+class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
+    
+    
+    final GlobalKey<FormState> myFormKey = GlobalKey<FormState>();
 
-    final uiProvider = Provider.of<UiProvider>(context);
+    String name = '';
+    String email = '';
 
-    final currentIndex = uiProvider.selectedMenuOpt;
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider (create: (_) => DatosListProvider(), ),
+        ChangeNotifierProvider (create: (_) => DatoListProvider(), )
+      ],
 
-    //final tempScan = new DatoModel(valor: 'http://google.com');
-    //DBProvider.db.getTodosScans().then((s)=>s!.forEach((element) {print(element.valor);}));
-
-    final datoListProvider = Provider.of<DatoListProvider>(context, listen: false);
-
-    return HomePage();
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'CRUD Sencillo',
+        // initialRoute: 'home',
+        // routes: {
+        //   'home'  : ( _ ) => MyApp(),
+        //   'ficha' : ( _ ) => const FichaScreen()
+        // },
+        home: Scaffold(
+          appBar: AppBar(
+            title: const Text('CRUD Sencillo'),
+          ),
+          body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.symmetric( horizontal: 20, vertical: 10),
+            child: Form(
+              key: myFormKey,
+              child: Column(
+                children: [
+                  
+                  TextFormField(
+                    decoration: const InputDecoration(
+                      labelText: 'Nombre',
+                    ),
+                    initialValue: '',
+                    onChanged: (value) {name=value;},
+                  ),
+                  
+                  const SizedBox(height: 30,),
+    
+                  TextFormField(
+                    decoration: const InputDecoration(
+                      labelText: 'Email',
+                    ),
+                    initialValue: '',
+                    keyboardType: TextInputType.emailAddress,
+                    onChanged: (value) {email=value;},
+                  ),
+    
+                  
+    
+                  ElevatedButton(
+                    child: const SizedBox(
+                      width: double.infinity,
+                      child: Center(child: Text('Guardar'))),
+                    onPressed: (){
+                      final nuevoIngreso = DatoListProvider() ;
+                      nuevoIngreso.nuevoDato(name, email);
+                      setState(() { });
+                    }
+                  ),
+    
+                  
+                    Container(
+                      height: 800,
+                      child: const ScanTiles(
+                      
+                      )
+                    ),   
+                  
+                ],
+                ),
+            )
+            ),
+          )
+        ),
+      ),
+    );
   }
 }

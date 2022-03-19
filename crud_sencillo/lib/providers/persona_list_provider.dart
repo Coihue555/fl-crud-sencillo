@@ -5,8 +5,8 @@ import 'package:crud_sencillo/providers/db_provider.dart';
 class DatosListProvider extends ChangeNotifier{
   List<DatoModel> datos = [];
 
-  Future<DatoModel> nuevoDato(String nombre) async {
-    final nuevoDato =  DatoModel(nombre: nombre);
+  Future<DatoModel> nuevoDato(String nombre, String email) async {
+    final nuevoDato =  DatoModel(nombre: nombre, email:email);
     final id = await DBProvider.db.nuevoDato(nuevoDato);
     //asignar el ID de la base de datos al modelo
     nuevoDato.id = id;
@@ -23,6 +23,16 @@ class DatosListProvider extends ChangeNotifier{
     this.datos = [...datos!];
     notifyListeners();
     return datos;
+
+
+  }
+
+  Future<int> updateDato(nombre, email) async{
+    final datos = await DBProvider.db.updateDato(nombre);
+    
+    notifyListeners();
+    return datos;
+
   }
 
 
