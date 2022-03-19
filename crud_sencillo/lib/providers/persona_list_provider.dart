@@ -26,6 +26,7 @@ class DatosListProvider extends ChangeNotifier{
 
 
   }
+  
 
   Future<int> updateDato(nombre, email) async{
     final datos = await DBProvider.db.updateDato(nombre);

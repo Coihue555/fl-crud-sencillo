@@ -46,7 +46,6 @@ class _FichaScreenState extends State<FichaScreen> {
           body: SingleChildScrollView(
           child: FutureBuilder<List<DatoModel>>(
             future: datoListProvider.cargarTodos(),
-            
             builder: (context, snapshot) { 
               if(snapshot.hasData){
                 return Padding(

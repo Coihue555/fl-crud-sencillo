@@ -39,6 +39,8 @@ class _ScanTilesState extends State<ScanTiles> {
                       subtitle: Text(snapshot.data![i].email.toString()),
                       trailing: const Icon(Icons.arrow_forward_ios, color: Colors.grey,),
                       onTap: () {
+                        final itemEditar = DatoListProvider() ;
+                        itemEditar.cargarDatosByNombre(snapshot.data![i].nombre.toString());
                         Navigator.push(
                           context,
                           MaterialPageRoute(builder: (context) => FichaScreen()),
