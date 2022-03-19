@@ -8,11 +8,7 @@ import 'package:crud_sencillo/providers/persona_list_provider.dart';
 import 'package:crud_sencillo/providers/scan_list_provider.dart';
 
 
-void main() async {
-  
-  runApp(FichaScreen())
 
-  ;}
 
 class FichaScreen extends StatefulWidget {
   
@@ -30,16 +26,7 @@ class _FichaScreenState extends State<FichaScreen> {
     final GlobalKey<FormState> myFormKey = GlobalKey<FormState>();
     final datoListProvider = Provider.of<DatosListProvider>(context, listen: false);
     
-    return MultiProvider(
-      providers: [
-        ChangeNotifierProvider (create: (_) => DatosListProvider(), ),
-        ChangeNotifierProvider (create: (_) => DatoListProvider(), )
-      ],
-
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'CRUD Sencillo',
-        home: Scaffold(
+    return Scaffold(
           appBar: AppBar(
             title: const Text('Edicion'),
           ),
@@ -103,8 +90,6 @@ class _FichaScreenState extends State<FichaScreen> {
             } 
           ),
           )
-        ),
-      ),
-    );
+        );
   }
 }

@@ -7,11 +7,7 @@ import 'package:crud_sencillo/providers/scan_list_provider.dart';
 import 'package:crud_sencillo/widget/scan_tiles.dart';
 
 
-void main() async {
-  
-  runApp(HomeScreen())
 
-  ;}
 
 class HomeScreen extends StatefulWidget {
   
