@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:crud_sencillo/providers/persona_list_provider.dart';
 import 'package:crud_sencillo/providers/scan_list_provider.dart';
-import 'package:crud_sencillo/widget/scan_tiles.dart';
+import 'package:crud_sencillo/widgets/scan_tiles.dart';
 
 
 

@@ -48,7 +48,10 @@ class _FichaScreenState extends State<FichaScreen> {
                           labelText: 'Nombre',
                         ),
                         initialValue: snapshot.data![0].nombre.toString(),
-                        onChanged: (value) {snapshot.data![0].nombre=value;},
+                        onChanged: (value) {
+                          snapshot.data![0].nombre=value;
+                          
+                        },
                       ),
                       
                       const SizedBox(height: 30,),
@@ -93,3 +96,4 @@ class _FichaScreenState extends State<FichaScreen> {
         );
   }
 }
+
