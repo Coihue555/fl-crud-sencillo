@@ -26,9 +26,9 @@ class DatosListProvider extends ChangeNotifier {
     return datos;
   }
 
-  Future<void> _actualizarItem(int id) async {
+  Future<void> actualizarItem(int? id) async {
     await DBProvider.db
-        .updateItem(id, _nombreController.text, _emailController.text);
+        .updateItem(id!, _nombreController.text, _emailController.text);
     notifyListeners();
   }
 
