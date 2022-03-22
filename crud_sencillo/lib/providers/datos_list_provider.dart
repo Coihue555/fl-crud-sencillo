@@ -3,7 +3,7 @@ import 'package:crud_sencillo/providers/db_provider.dart';
 
 class DatoListProvider extends ChangeNotifier{
   List<DatoModel> datos = [];
-  String tipoSeleccionado = 'http';
+  DatoModel datoSeleccionado = DatoModel(nombre: '', email: '');
 
   Future<DatoModel> nuevoDato(String nombre, String email ) async {
     final nuevoDato =  DatoModel(email: email, nombre: nombre);
@@ -11,23 +11,27 @@ class DatoListProvider extends ChangeNotifier{
     //asignar el ID de la base de datos al modelo
     nuevoDato.id = id;
 
-    if(this.tipoSeleccionado==nuevoDato.nombre){
+    
       this.datos.add(nuevoDato);
       notifyListeners();
-    }    
+    
     return nuevoDato;
   }
 
-  cargarDatos() async {
+
+
+  Future<List<DatoModel>> cargarTodos() async {
     final datos = await DBProvider.db.getTodos();
     this.datos = [...datos!];
     notifyListeners();
+    return datos;
+
+
   }
 
   cargarDatosByNombre(String nombre) async {
-    final datos = await DBProvider.db.getDatosByNombre(nombre);
-    this.datos = [...datos!];
-    this.tipoSeleccionado = nombre;
+    this.datoSeleccionado = await DBProvider.db.getDatosByNombre(nombre);
+    
     notifyListeners();
   }
 
@@ -39,7 +43,16 @@ class DatoListProvider extends ChangeNotifier{
 
   borrarDatoById( int? id) async {
     await DBProvider.db.deleteDato(id!);
-    cargarDatos();
+    cargarTodos();
   }
+
+  Future<DatoModel?> getDatosById(int id) async {
+    await DBProvider.db.getDatosById(id);
+    this.datos = [];
+    this.datos = [...datos];
+    notifyListeners();
+  }
+
+  
 
 }

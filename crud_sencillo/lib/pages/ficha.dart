@@ -1,11 +1,13 @@
 // ignore_for_file: avoid_print
 
 import 'package:crud_sencillo/pages/home_page.dart';
+import 'package:crud_sencillo/providers/datos_list_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:crud_sencillo/providers/db_provider.dart';
-import 'package:crud_sencillo/providers/persona_list_provider.dart';
-import 'package:crud_sencillo/providers/scan_list_provider.dart';
+
+
+
+
 
 
 
@@ -22,24 +24,17 @@ class _FichaScreenState extends State<FichaScreen> {
   @override
   Widget build(BuildContext context) {
     
-    
-    final GlobalKey<FormState> myFormKey2 = GlobalKey<FormState>();
-    final datoListProvider = Provider.of<DatosListProvider>(context, listen: false);
-    
+    final elementoSeleccionado = Provider.of<DatoListProvider>(context) ;
+
     return Scaffold(
           appBar: AppBar(
             title: const Text('Edicion'),
           ),
           body: SingleChildScrollView(
-          child: FutureBuilder<List<DatoModel>>(
-            //revisar
-            future: datoListProvider.cargarTodos(),
-            builder: (context, snapshot) { 
-              if(snapshot.hasData){
-                return Padding(
+          child: 
+                 Padding(
                   padding: const EdgeInsets.symmetric( horizontal: 20, vertical: 10),
                   child: Form(
-                  key: myFormKey2,
                   child: Column(
                     children: [
                     
@@ -48,9 +43,9 @@ class _FichaScreenState extends State<FichaScreen> {
                         decoration: const InputDecoration(
                           labelText: 'Nombre',
                         ),
-                        initialValue: snapshot.data![0].nombre,
+                        initialValue: elementoSeleccionado.datoSeleccionado.nombre,
                         
-                        onChanged: (value) { snapshot.data![0].nombre=value;  },
+                        onChanged: (value) {   },
                       ),
                       
                       const SizedBox(height: 30,),
@@ -59,9 +54,9 @@ class _FichaScreenState extends State<FichaScreen> {
                         decoration: const InputDecoration(
                           labelText: 'Email',
                         ),
-                        initialValue: snapshot.data![0].email,
+                        initialValue: elementoSeleccionado.datoSeleccionado.email,
                         keyboardType: TextInputType.emailAddress,
-                        onChanged: (value) {snapshot.data![0].email=value;},
+                        onChanged: (value) {},
                       ),
                 
                     
@@ -71,8 +66,7 @@ class _FichaScreenState extends State<FichaScreen> {
                           width: double.infinity,
                           child: Center(child: Text('Guardar'))),
                         onPressed: (){
-                          final nuevoIngreso = DatoListProvider() ;
-                          nuevoIngreso.cargarDatos();
+                          
                           Navigator.push(
                             context,
                             MaterialPageRoute( builder: (context) => HomeScreen() ),
@@ -85,11 +79,7 @@ class _FichaScreenState extends State<FichaScreen> {
                   ),
                   
               )
-              );
-              } return const CircularProgressIndicator();
-              
-            } 
-          ),
+              )          
           )
         );
   }

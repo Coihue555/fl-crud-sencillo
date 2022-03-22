@@ -4,8 +4,7 @@ import 'package:provider/provider.dart';
 
 import 'package:crud_sencillo/pages/ficha.dart';
 import 'package:crud_sencillo/pages/home_page.dart';
-import 'package:crud_sencillo/providers/persona_list_provider.dart';
-import 'package:crud_sencillo/providers/scan_list_provider.dart';
+import 'package:crud_sencillo/providers/datos_list_provider.dart';
 
 
 
@@ -34,7 +33,6 @@ class _MyAppState extends State<MyApp> {
 
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider (create: (_) => DatosListProvider(), ),
         ChangeNotifierProvider (create: (_) => DatoListProvider(), )
       ],
 

@@ -2,8 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:crud_sencillo/providers/persona_list_provider.dart';
-import 'package:crud_sencillo/providers/scan_list_provider.dart';
+import 'package:crud_sencillo/providers/datos_list_provider.dart';
 import 'package:crud_sencillo/widgets/scan_tiles.dart';
 
 
@@ -26,17 +25,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
     String name = '';
     String email = '';
+      
 
-    return MultiProvider(
-      providers: [
-        ChangeNotifierProvider (create: (_) => DatosListProvider(), ),
-        ChangeNotifierProvider (create: (_) => DatoListProvider(), )
-      ],
-
-      child: MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'CRUD Sencillo',
-        home: Scaffold(
+        return Scaffold(
           appBar: AppBar(
             title: const Text('CRUD Sencillo'),
           ),
@@ -93,8 +84,6 @@ class _HomeScreenState extends State<HomeScreen> {
             )
             ),
           )
-        ),
-      ),
-    );
+        );
   }
 }

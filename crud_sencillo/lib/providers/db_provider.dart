@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:flutter/cupertino.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
@@ -7,7 +8,7 @@ import 'package:sqflite/sqflite.dart';
 import 'package:crud_sencillo/models/dato_model.dart';
 export 'package:crud_sencillo/models/dato_model.dart';
 
-class DBProvider{
+class DBProvider {
 
   static Database? _database;
   static final DBProvider db = DBProvider._();
@@ -29,7 +30,6 @@ class DBProvider{
 
     Directory documentsDirectory = await getApplicationDocumentsDirectory();
     final path = join(documentsDirectory.path, 'PersonasDB.db');
-    print(path);
 
     return await openDatabase(
       path,
@@ -95,15 +95,15 @@ class DBProvider{
         : [];
     }
 
-    Future<List<DatoModel>?> getDatosByNombre(String nombre) async {
+    Future<DatoModel> getDatosByNombre(String nombre) async {
       final db = await database;
       final res = await db!.rawQuery('''
         SELECT * FROM Datos WHERE nombre = '$nombre'
       ''');
 
       return res.isNotEmpty
-        ? res.map((s) => DatoModel.fromJson(s)).toList()
-        : [];
+        ? res.map((s) => DatoModel.fromJson(s)).toList().first
+        : DatoModel(nombre: '', email: '');
     }
 
     Future<int> updateDato(DatoModel nuevoDato) async{

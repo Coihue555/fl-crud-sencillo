@@ -1,8 +1,7 @@
 import 'package:crud_sencillo/pages/ficha.dart';
-import 'package:crud_sencillo/providers/scan_list_provider.dart';
+import 'package:crud_sencillo/providers/datos_list_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:crud_sencillo/models/dato_model.dart';
-import 'package:crud_sencillo/providers/persona_list_provider.dart';
 import 'package:provider/provider.dart';
 
 class ScanTiles extends StatefulWidget {
@@ -15,7 +14,7 @@ class ScanTiles extends StatefulWidget {
 class _ScanTilesState extends State<ScanTiles> {
   @override
   Widget build(BuildContext context) {
-    final datoListProvider = Provider.of<DatosListProvider>(context, listen: false);
+    final datoListProvider = Provider.of<DatoListProvider>(context, listen: false);
 
     return FutureBuilder<List<DatoModel>>(
       future: datoListProvider.cargarTodos(),
