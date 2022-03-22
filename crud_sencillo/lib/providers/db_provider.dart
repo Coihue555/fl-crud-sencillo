@@ -61,11 +61,11 @@ class DBProvider {
     return res;
   }
 
-  Future<DatoModel?> getDatosById(int id) async {
+  Future<DatoModel> getDatosById(int id) async {
     final db = await database;
     final res = await db!.query('Datos', where: 'id = ?', whereArgs: [id]);
 
-    return res.isNotEmpty ? DatoModel.fromJson(res.first) : null;
+    return res.isNotEmpty ? DatoModel.fromJson(res.first) : DatoModel(nombre: '', email: '');
   }
 
   Future<List<DatoModel>?> getTodos() async {
@@ -103,7 +103,7 @@ class DBProvider {
     };
 
     final result =
-        await db!.update('items', data, where: "id = ?", whereArgs: [id]);
+        await db!.update('Datos', data, where: "id = ?", whereArgs: [id]);
     return result;
   }
 

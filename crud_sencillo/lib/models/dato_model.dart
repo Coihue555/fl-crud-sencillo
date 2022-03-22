@@ -1,13 +1,13 @@
 class DatoModel {
     
-    int? id;
+    int id;
     String nombre;
     String email;
 
     DatoModel({
-        this.id,
+        this.id = 0,
         required this.nombre,
-        required this.email,
+        this.email = '',
     }); 
 
 

@@ -19,7 +19,7 @@ class _FichaScreenState extends State<FichaScreen> {
   @override
   Widget build(BuildContext context) {
     
-    final elementoSeleccionado = Provider.of<DatosListProvider>(context) ;
+    final elementoSeleccionado = Provider.of<DatosListProvider>(context);
 
     return Scaffold(
           appBar: AppBar(
@@ -59,6 +59,8 @@ class _FichaScreenState extends State<FichaScreen> {
                           child: Center(child: Text('Guardar'))),
                         onPressed: (){
                           
+                          elementoSeleccionado.actualizarDatos(elementoSeleccionado.datoSeleccionado.id, elementoSeleccionado.datoSeleccionado.nombre, elementoSeleccionado.datoSeleccionado.email);
+                          setState(() { });
                           Navigator.push(
                             context,
                             MaterialPageRoute( builder: (context) => HomeScreen() ),

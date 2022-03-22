@@ -47,10 +47,16 @@ class DatosListProvider extends ChangeNotifier{
   }
 
   Future<DatoModel?> getDatosById(int id) async {
-    await DBProvider.db.getDatosById(id);
-    this.datos = [];
-    this.datos = [...datos];
+    datoSeleccionado = await DBProvider.db.getDatosById(id);
+    
     notifyListeners();
+  }
+
+  Future<DatoModel?> actualizarDatos(int id, String nombreNvo, String emailNvo ) async {
+    
+    await DBProvider.db.updateItem(id, nombreNvo, emailNvo);
+    cargarTodos();
+    
   }
 
   
