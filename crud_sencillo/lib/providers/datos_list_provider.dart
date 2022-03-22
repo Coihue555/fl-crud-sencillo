@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:crud_sencillo/providers/db_provider.dart';
 
-class DatoListProvider extends ChangeNotifier{
+class DatosListProvider extends ChangeNotifier{
   List<DatoModel> datos = [];
   DatoModel datoSeleccionado = DatoModel(nombre: '', email: '');
 

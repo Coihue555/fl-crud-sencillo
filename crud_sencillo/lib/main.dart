@@ -33,7 +33,7 @@ class _MyAppState extends State<MyApp> {
 
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider (create: (_) => DatoListProvider(), )
+        ChangeNotifierProvider (create: (_) => DatosListProvider(), )
       ],
 
       child: MaterialApp(

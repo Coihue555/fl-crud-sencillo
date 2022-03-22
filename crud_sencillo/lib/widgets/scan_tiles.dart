@@ -14,7 +14,7 @@ class ScanTiles extends StatefulWidget {
 class _ScanTilesState extends State<ScanTiles> {
   @override
   Widget build(BuildContext context) {
-    final datoListProvider = Provider.of<DatoListProvider>(context, listen: false);
+    final datoListProvider = Provider.of<DatosListProvider>(context, listen: false);
 
     return FutureBuilder<List<DatoModel>>(
       future: datoListProvider.cargarTodos(),
@@ -28,7 +28,7 @@ class _ScanTilesState extends State<ScanTiles> {
                 color: Colors.red,
               ),
               onDismissed: (DismissDirection direction){
-                Provider.of<DatoListProvider>(context, listen: false).borrarDatoById(snapshot.data![i].id);
+                Provider.of<DatosListProvider>(context, listen: false).borrarDatoById(snapshot.data![i].id);
               },
               child: ListTile(
               leading: Icon(Icons.home,
@@ -38,8 +38,7 @@ class _ScanTilesState extends State<ScanTiles> {
                       subtitle: Text(snapshot.data![i].email.toString()),
                       trailing: const Icon(Icons.arrow_forward_ios, color: Colors.grey,),
                       onTap: () {
-                        final itemEditar = DatoListProvider() ;
-                        itemEditar.cargarDatosByNombre(snapshot.data![i].nombre.toString());
+                        
                         Navigator.push(
                           context,
                           MaterialPageRoute(builder: (context) => FichaScreen()),

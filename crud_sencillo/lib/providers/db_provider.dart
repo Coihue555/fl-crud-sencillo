@@ -1,6 +1,5 @@
 import 'dart:io';
 
-import 'package:flutter/cupertino.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite/sqflite.dart';
@@ -9,10 +8,6 @@ import 'package:crud_sencillo/models/dato_model.dart';
 export 'package:crud_sencillo/models/dato_model.dart';
 
 class DBProvider {
-<<<<<<< HEAD
-
-=======
->>>>>>> dd366c115b86a8d61088ad9bbf94bbb05b25a40e
   static Database? _database;
   static final DBProvider db = DBProvider._();
 
@@ -80,7 +75,6 @@ class DBProvider {
     return res.isNotEmpty ? res.map((s) => DatoModel.fromJson(s)).toList() : [];
   }
 
-<<<<<<< HEAD
     Future<DatoModel> getDatosByNombre(String nombre) async {
       final db = await database;
       final res = await db!.rawQuery('''
@@ -91,16 +85,6 @@ class DBProvider {
         ? res.map((s) => DatoModel.fromJson(s)).toList().first
         : DatoModel(nombre: '', email: '');
     }
-=======
-  Future<List<DatoModel>?> getDatosByNombre(String nombre) async {
-    final db = await database;
-    final res = await db!.rawQuery('''
-        SELECT * FROM Datos WHERE nombre = '$nombre'
-      ''');
-
-    return res.isNotEmpty ? res.map((s) => DatoModel.fromJson(s)).toList() : [];
-  }
->>>>>>> dd366c115b86a8d61088ad9bbf94bbb05b25a40e
 
   Future<int> updateDato(DatoModel nuevoDato) async {
     final db = await database;

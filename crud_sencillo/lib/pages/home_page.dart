@@ -65,7 +65,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       width: double.infinity,
                       child: Center(child: Text('Guardar'))),
                     onPressed: (){
-                      final nuevoIngreso = DatoListProvider() ;
+                      final nuevoIngreso = DatosListProvider() ;
                       nuevoIngreso.nuevoDato(name, email);
                       setState(() { });
                     }
