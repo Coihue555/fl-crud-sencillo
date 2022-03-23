@@ -1,25 +1,23 @@
 class DatoModel {
-    
-    int id;
-    String nombre;
-    String email;
+  int? id;
+  String nombre;
+  String email;
 
-    DatoModel({
-        this.id = 0,
-        required this.nombre,
-        this.email = '',
-    }); 
+  DatoModel({
+    this.id,
+    required this.nombre,
+    this.email = '',
+  });
 
-
-    factory DatoModel.fromJson(Map<String, dynamic> json) => DatoModel(
+  factory DatoModel.fromJson(Map<String, dynamic> json) => DatoModel(
         id: json["id"],
         nombre: json["nombre"],
         email: json["email"],
-    );
+      );
 
-    Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toJson() => {
         "id": id,
         "nombre": nombre,
         "email": email,
-    };
+      };
 }
