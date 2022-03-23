@@ -59,6 +59,7 @@ class _FichaScreenState extends State<FichaScreen> {
                                 elementoSeleccionado.datoSeleccionado.id!,
                                 elementoSeleccionado.datoSeleccionado.nombre,
                                 elementoSeleccionado.datoSeleccionado.email);
+                            //Anda
                             setState(() {});
                             Navigator.push(
                               context,
